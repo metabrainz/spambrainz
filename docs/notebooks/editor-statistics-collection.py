@@ -61,7 +61,9 @@ gender_hist = hist(df["gender"])
 # In[6]:
 
 
-emaildomain_hist = hist(df["email"].str.replace(r".*@", ""), 100)
+emaildomain_hist_raw = hist(df["email"].str.replace(r".*@", ""), 100)
+# As email domains are personally identifying data, drop domains with fewer than ten occurances
+emaildomain_hist = emaildomain_hist_raw.where(lambda x : x >= 10).dropna()
 
 
 # In[7]:
