@@ -8,6 +8,8 @@ flask = "*"
 flask-sqlalchemy = "*"
 sqlalchemy-utils = "*"
 passlib = "*"
+flask-restful = "*"
+flask-script = "*"
 
 [dev-packages]
 

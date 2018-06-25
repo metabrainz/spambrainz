@@ -27,3 +27,5 @@ CSRF_SESSION_KEY = "secret"
 SECRET_KEY = "secret"
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+API_URL = "/api/v1/"
