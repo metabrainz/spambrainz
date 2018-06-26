@@ -1,12 +1,12 @@
 from flask_restful import Resource, reqparse
 
 
-class AssessEditor(Resource):
+class RateEditor(Resource):
     def __init__(self, **kwargs):
         self.backend = kwargs["backend"]
 
     def put(self, editor_id):
-        self.backend.assess_editor(editor_id)
+        self.backend.rate_editor(editor_id)
         return {"status": "ok"}
 
 

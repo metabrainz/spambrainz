@@ -1,10 +1,11 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_debugtoolbar import DebugToolbarExtension
 from .web.models.base import Base
 from .web.models.user import User
 from .web.views import index
-from .api.api import api_bp
+from .api.api import create_api_bp
 
 
 def create_app(test_config=None):
@@ -24,6 +25,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    toolbar = DebugToolbarExtension(app)
     db = SQLAlchemy(app)
 
     # Recreate database in debug mode
@@ -33,7 +35,9 @@ def create_app(test_config=None):
         db.session.add(User("admin", "adminPassword"))
         db.session.commit()
 
+    api_prefix = app.config["API_PREFIX"]
+
     app.register_blueprint(index.bp)
-    app.register_blueprint(api_bp)
+    app.register_blueprint(create_api_bp(), url_prefix=api_prefix)
 
     return app

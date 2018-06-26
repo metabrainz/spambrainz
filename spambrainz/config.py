@@ -28,4 +28,4 @@ SECRET_KEY = "secret"
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-API_URL = "/api/v1/"
+API_PREFIX = "/api/1.0"
