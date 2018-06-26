@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask import current_app as app
 from flask_restful import Api
 from .editor import AssessEditor, TrainEditor
-from ..backends.dummybackend import DummyBackend
+from ..backends.dummy import DummyBackend
 
 api_bp = Blueprint("api", __name__)
 api = Api(api_bp)
@@ -12,16 +12,16 @@ api = Api(api_bp)
 api_url = "/api/v1.0/"
 
 # TODO: Turn this into config option
-classifier = DummyBackend()
+backend = DummyBackend()
 
 api.add_resource(AssessEditor,
                  api_url,
                  "/<string:editor_id>",
-                 resource_class_kwargs={"classifier": classifier}
+                 resource_class_kwargs={"backend": backend}
                  )
 
 api.add_resource(TrainEditor,
                  api_url,
                  "/<string:editor_id>",
-                 resource_class_kwargs={"classifier": classifier}
+                 resource_class_kwargs={"backend": backend}
                  )

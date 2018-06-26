@@ -1,7 +1,7 @@
-from spambrainz.backends.classifier import Classifier
+from spambrainz.backends.base import Backend
 
 
-class DummyBackend(Classifier):
+class DummyBackend(Backend):
     def assess_editor(self, editor_id):
         return True
 

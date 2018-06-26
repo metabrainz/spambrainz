@@ -1,4 +1,4 @@
-class Classifier:
+class Backend:
     def assess_editor(self, editor_id):
         pass
 
