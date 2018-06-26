@@ -1,8 +1,12 @@
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy_utils import PasswordType, force_auto_coercion
-from .base import Base
+
+db = SQLAlchemy()
 
 force_auto_coercion()
+Base = declarative_base()
 
 
 class User(Base):
@@ -18,3 +22,10 @@ class User(Base):
 
     def __repr__(self):
         return self.username
+
+
+def reset_debug_db():
+    Base.metadata.drop_all(bind=db.engine)
+    Base.metadata.create_all(bind=db.engine)
+    db.session.add(User("admin", "adminPassword"))
+    db.session.commit()

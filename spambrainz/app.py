@@ -1,11 +1,13 @@
-import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_debugtoolbar import DebugToolbarExtension
-from .web.models.base import Base
-from .web.models.user import User
+from flask_redis import FlaskRedis
+from .web.models import db
 from .web.views import index
 from .api.api import create_api_bp
+from .backends.dummy import DummyBackend
+
+toolbar = DebugToolbarExtension()
+redis = FlaskRedis()
 
 
 def create_app(test_config=None):
@@ -19,25 +21,16 @@ def create_app(test_config=None):
         # load the test config if passed in
         app.config.from_mapping(test_config)
 
-    # ensure the instance folder exists
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
+    redis.init_app(app)
+    db.init_app(app)
 
-    toolbar = DebugToolbarExtension(app)
-    db = SQLAlchemy(app)
-
-    # Recreate database in debug mode
     if app.debug:
-        Base.metadata.drop_all(bind=db.engine)
-        Base.metadata.create_all(bind=db.engine)
-        db.session.add(User("admin", "adminPassword"))
-        db.session.commit()
+        toolbar.init_app(app)
+        # reset_debug_db()
 
-    api_prefix = app.config["API_PREFIX"]
+    backend = DummyBackend()
 
     app.register_blueprint(index.bp)
-    app.register_blueprint(create_api_bp(), url_prefix=api_prefix)
+    app.register_blueprint(create_api_bp(backend), url_prefix=app.config["API_PREFIX"])
 
     return app

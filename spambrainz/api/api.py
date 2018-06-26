@@ -1,16 +1,11 @@
 from flask import Blueprint
 from flask_restful import Api
-from werkzeug.urls import url_join
 from .editor import RateEditor, TrainEditor
-from ..backends.dummy import DummyBackend
 
 
-def create_api_bp():
+def create_api_bp(backend):
     api_bp = Blueprint("api", __name__)
     api = Api(api_bp)
-
-    # TODO: Turn this into config option
-    backend = DummyBackend()
 
     api.add_resource(RateEditor,
                      "/<string:editor_id>/rate",
