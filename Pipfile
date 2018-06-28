@@ -12,6 +12,7 @@ flask-restful = "*"
 flask-script = "*"
 flask-redis = "*"
 flask-debugtoolbar = "*"
+brainzutils-python = "*"
 
 [dev-packages]
 

@@ -1,10 +1,7 @@
-from spambrainz.backends.base import Backend
+from .db_backend import DbBackend
 
 
-class DbDummyBackend(Backend):
-    def __init__(self, db):
-        self.db = db
-
+class DbDummyBackend(DbBackend):
     def rate_editor(self, editor_id):
         return True
 

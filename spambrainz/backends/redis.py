@@ -1,10 +1,10 @@
-from spambrainz.backends.base import Backend
+from flask_redis import FlaskRedis
+from .db_backend import DbBackend
+
+redis = FlaskRedis()
 
 
-class RedisBackend(Backend):
-    def __init__(self, redis):
-        self.redis = redis
-
+class RedisBackend(DbBackend):
     def rate_editor(self, editor_id):
         return True
 
