@@ -10,9 +10,9 @@ sqlalchemy-utils = "*"
 passlib = "*"
 flask-restful = "*"
 flask-script = "*"
-flask-redis = "*"
 flask-debugtoolbar = "*"
 brainzutils-python = "*"
+celery = "*"
 
 [dev-packages]
 

@@ -20,3 +20,6 @@ SECRET_KEY = "secret"
 API_PREFIX = "/api/1.0"
 
 BACKEND = "dummy"
+
+CELERY_RESULT_BACKEND = ""
+CELERY_BROKER_URL = ""

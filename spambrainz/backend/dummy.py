@@ -1,4 +1,4 @@
-from spambrainz.backends.base import Backend
+from spambrainz.backend.base import Backend
 
 
 class DummyBackend(Backend):

@@ -6,8 +6,10 @@ class RateEditor(Resource):
         self.backend = kwargs["backend"]
 
     def put(self, editor_id):
-        self.backend.rate_editor(editor_id)
-        return {"status": "ok"}
+        if self.backend.rate_editor(editor_id):
+            return {"status": "ok"}
+        else:
+            return {"status": "could not find editor"}
 
 
 class TrainEditor(Resource):
@@ -20,5 +22,7 @@ class TrainEditor(Resource):
     def put(self, editor_id):
         args = self.parser.parse_args()
 
-        self.backend.train_editor(editor_id, args.is_spammer)
-        return {"status": "ok"}
+        if self.backend.train_editor(editor_id, args.is_spammer):
+            return {"status": "ok"}
+        else:
+            return {"status": "could not find editor"}
