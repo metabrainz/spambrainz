@@ -28,3 +28,8 @@ def rate_editor(editor):
 def train_editor(editor):
     global editor_model
     pass
+
+
+@celery.task()
+def write_report(score, editor_id):
+    pass

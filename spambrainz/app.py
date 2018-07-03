@@ -31,14 +31,15 @@ def create_app(test_config=None):
         backend = DummyBackend()
     else:
         mbdb_uri = app.config["MB_DATABASE_URI"]
+        from brainzutils.musicbrainz_db import init_db_engine
+        init_db_engine(mbdb_uri)
 
         if backend_setting == "dbdummy":
             from .backend.db_dummy import DbDummyBackend
-            backend = DbDummyBackend(db, mbdb_uri)
+            backend = DbDummyBackend()
         else:
-            from .backend.celery import redis, CeleryBackend
-            redis.init_app(app)
-            backend = CeleryBackend(db, mbdb_uri)
+            from .backend.celery import CeleryBackend
+            backend = CeleryBackend()
 
     app.register_blueprint(index.bp)
     app.register_blueprint(create_api_bp(backend), url_prefix=app.config["API_PREFIX"])

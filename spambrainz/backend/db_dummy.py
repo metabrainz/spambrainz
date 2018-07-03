@@ -1,13 +1,14 @@
-from .db_base import DbBackend
+from .base import Backend
+from .utils import get_editor
 
 
-class DbDummyBackend(DbBackend):
+class DbDummyBackend(Backend):
     def rate_editor(self, editor_id):
-        if self.get_editor(editor_id):
+        if get_editor(editor_id):
             return True
         return False
 
     def train_editor(self, editor_id, is_spammer):
-        if self.get_editor(editor_id):
+        if get_editor(editor_id):
             return True
         return False

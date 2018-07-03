@@ -1,20 +1,22 @@
-from .db_base import DbBackend
+from .base import Backend
+from .utils import get_editor
 from .. import celery_tasks
 
 
-class CeleryBackend(DbBackend):
+class CeleryBackend(Backend):
     def rate_editor(self, editor_id):
-        editor = self.get_editor(editor_id)
+        editor = get_editor(editor_id)
         if editor:
-            result = celery_tasks.rate_editor(editor)
+            # TODO: Connection error handling
+            celery_tasks.rate_editor.apply_async(editor, link=celery_tasks.write_report(editor_id))
             return True
         else:
             return False
 
     def train_editor(self, editor_id, is_spammer):
-        editor = self.get_editor(editor_id)
+        editor = get_editor(editor_id)
         if editor:
-            result = celery_tasks.train_editor(editor)
+            celery_tasks.train_editor.apply_async(editor)
             return True
         else:
             return False
