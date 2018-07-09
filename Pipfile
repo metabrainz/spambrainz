@@ -7,7 +7,7 @@ name = "pypi"
 
 [packages]
 
-flask = "*"
+flask = ">=1.0.0"
 flask-sqlalchemy = "*"
 sqlalchemy-utils = "*"
 passlib = "*"
@@ -23,6 +23,7 @@ brainzutils = {git = "https://github.com/metabrainz/brainzutils-python.git", edi
 
 flask-testing = "*"
 pytest = "*"
+pytest-env = "*"
 
 
 [requires]

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f98b8bff7daddce6e8bfd5140cead3e29cb393be9f3f9f041ff9182061221252"
+            "sha256": "c5b295b3bff7c0655e6e517a31340320b661c53bd6e5d90ad2f67136bf66fee6"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -45,11 +45,6 @@
             "hashes": [],
             "version": "==1.4"
         },
-        "brainzutils": {
-            "editable": true,
-            "git": "https://github.com/metabrainz/brainzutils-python.git",
-            "ref": "5210c0bd0a640141c81932d9288a50dcc1fdbab6"
-        },
         "celery": {
             "hashes": [],
             "version": "==4.2.0"
@@ -66,9 +61,13 @@
             "hashes": [],
             "version": "==6.7"
         },
+        "e41a863": {
+            "editable": true,
+            "path": "../brainzutils-python/"
+        },
         "flask": {
             "hashes": [],
-            "version": "==0.12.2"
+            "version": "==1.0.2"
         },
         "flask-debugtoolbar": {
             "hashes": [],
@@ -219,6 +218,10 @@
         "pytest": {
             "hashes": [],
             "version": "==3.6.3"
+        },
+        "pytest-env": {
+            "hashes": [],
+            "version": "==0.6.2"
         },
         "six": {
             "hashes": [],

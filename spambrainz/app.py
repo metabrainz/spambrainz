@@ -1,4 +1,3 @@
-from os import environ
 from flask import Flask
 from flask_debugtoolbar import DebugToolbarExtension
 from .web.models import db
@@ -8,16 +7,11 @@ from .api.api import create_api_bp
 toolbar = DebugToolbarExtension()
 
 
-def create_app(test_config=None):
+def create_app(config_object="spambrainz.config.Config"):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=False, template_folder="web/templates")
 
-    if test_config is None:
-        # load the instance config, if it exists, when not testing
-        app.config.from_pyfile("config.py")
-    else:
-        # load the test config if passed in
-        app.config.from_mapping(test_config)
+    app.config.from_object(config_object)
 
     db.init_app(app)
 
@@ -25,13 +19,13 @@ def create_app(test_config=None):
         toolbar.init_app(app)
         # reset_debug_db()
 
-    backend_setting = environ["BACKEND"]
+    backend_setting = app.config["BACKEND"]
 
     if backend_setting == "dummy":
         from .backend.dummy import DummyBackend
         backend = DummyBackend()
     else:
-        mbdb_uri = environ["MB_DATABASE_URI"]
+        mbdb_uri = app.config["MB_DATABASE_URI"]
         from brainzutils.musicbrainz_db import init_db_engine
         init_db_engine(mbdb_uri)
 

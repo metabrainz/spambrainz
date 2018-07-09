@@ -1,12 +1,13 @@
 from flask_testing import TestCase
-from spambrainz.app import create_app
+from spambrainz import app
+from spambrainz.config import Config
 
 
 class ApiTestCase(TestCase):
     def create_app(self):
-        app = create_app()
-        app.config["TESTING"] = True
-        return app
+        config = Config()
+        config.BACKEND = "dummy"
+        return app.create_app(config)
 
     def setUp(self):
         self.api_prefix = self.app.config["API_PREFIX"]
