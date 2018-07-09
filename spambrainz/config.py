@@ -22,3 +22,4 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.getenv("SB_DATABASE_URI")
     MB_DATABASE_URI = os.getenv("MB_DATABASE_URI")
     BACKEND = os.getenv("BACKEND")
+    API_TOKEN = os.getenv("API_TOKEN")

@@ -17,6 +17,7 @@ flask-debugtoolbar = "*"
 celery = "*"
 "psycopg2-binary" = "*"
 brainzutils = {git = "https://github.com/metabrainz/brainzutils-python.git", editable = true}
+pytest-cov = "*"
 
 
 [dev-packages]

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c5b295b3bff7c0655e6e517a31340320b661c53bd6e5d90ad2f67136bf66fee6"
+            "sha256": "fda4903c4d46da7eeecc17aa1c29a2543981d474aecf6c7bfc4b11eaa31f411d"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -37,6 +37,14 @@
             "hashes": [],
             "version": "==3.0.2"
         },
+        "atomicwrites": {
+            "hashes": [],
+            "version": "==1.1.5"
+        },
+        "attrs": {
+            "hashes": [],
+            "version": "==18.1.0"
+        },
         "billiard": {
             "hashes": [],
             "version": "==3.5.0.4"
@@ -60,6 +68,10 @@
         "click": {
             "hashes": [],
             "version": "==6.7"
+        },
+        "coverage": {
+            "hashes": [],
+            "version": "==4.5.1"
         },
         "e41a863": {
             "editable": true,
@@ -113,6 +125,10 @@
             "hashes": [],
             "version": "==2017.6.2"
         },
+        "more-itertools": {
+            "hashes": [],
+            "version": "==4.2.0"
+        },
         "msgpack-python": {
             "hashes": [],
             "version": "==0.4.8"
@@ -121,9 +137,25 @@
             "hashes": [],
             "version": "==1.7.1"
         },
+        "pluggy": {
+            "hashes": [],
+            "version": "==0.6.0"
+        },
         "psycopg2-binary": {
             "hashes": [],
             "version": "==2.7.5"
+        },
+        "py": {
+            "hashes": [],
+            "version": "==1.5.4"
+        },
+        "pytest": {
+            "hashes": [],
+            "version": "==3.6.3"
+        },
+        "pytest-cov": {
+            "hashes": [],
+            "version": "==2.5.1"
         },
         "pytz": {
             "hashes": [],

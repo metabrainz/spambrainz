@@ -37,6 +37,6 @@ def create_app(config_object="spambrainz.config.Config"):
             backend = CeleryBackend()
 
     app.register_blueprint(index.bp)
-    app.register_blueprint(create_api_bp(backend), url_prefix=app.config["API_PREFIX"])
+    app.register_blueprint(create_api_bp(backend, app.config["API_TOKEN"]), url_prefix=app.config["API_PREFIX"])
 
     return app
