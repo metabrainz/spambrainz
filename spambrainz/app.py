@@ -1,3 +1,4 @@
+from os import environ
 from flask import Flask
 from flask_debugtoolbar import DebugToolbarExtension
 from .web.models import db
@@ -24,13 +25,13 @@ def create_app(test_config=None):
         toolbar.init_app(app)
         # reset_debug_db()
 
-    backend_setting = app.config["BACKEND"]
+    backend_setting = environ["BACKEND"]
 
     if backend_setting == "dummy":
         from .backend.dummy import DummyBackend
         backend = DummyBackend()
     else:
-        mbdb_uri = app.config["MB_DATABASE_URI"]
+        mbdb_uri = environ["MB_DATABASE_URI"]
         from brainzutils.musicbrainz_db import init_db_engine
         init_db_engine(mbdb_uri)
 
