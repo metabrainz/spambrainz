@@ -1,4 +1,5 @@
 from flask_restful import Resource, reqparse, abort
+from typing import Dict
 
 
 class RateEditor(Resource):
@@ -9,12 +10,11 @@ class RateEditor(Resource):
         self.parser = reqparse.RequestParser()
         self.parser.add_argument("token", type=str, required=True)
 
-    def put(self, editor_id):
+    def put(self, editor_id: int) -> Dict[str, str]:
         args = self.parser.parse_args()
 
         if args.token != self.token:
             abort(403)
-
         if self.backend.rate_editor(editor_id):
             return {"status": "ok"}
         else:
@@ -30,7 +30,7 @@ class TrainEditor(Resource):
         self.parser.add_argument("token", type=str, required=True)
         self.parser.add_argument("is_spammer", type=bool, required=True)
 
-    def put(self, editor_id):
+    def put(self, editor_id: int) -> Dict[str, str]:
         args = self.parser.parse_args()
 
         if args.token != self.token:

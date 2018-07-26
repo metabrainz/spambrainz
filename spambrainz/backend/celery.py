@@ -4,7 +4,7 @@ from spambrainz.celery import keras_tasks, report_tasks
 
 
 class CeleryBackend(Backend):
-    def rate_editor(self, editor_id):
+    def rate_editor(self, editor_id: int) -> bool:
         editor = get_editor(editor_id)
         if editor:
             # TODO: Connection error handling
@@ -13,7 +13,7 @@ class CeleryBackend(Backend):
         else:
             return False
 
-    def train_editor(self, editor_id, is_spammer):
+    def train_editor(self, editor_id: int, is_spammer: bool) -> bool:
         editor = get_editor(editor_id)
         if editor:
             keras_tasks.train_editor.apply_async(editor)

@@ -19,14 +19,14 @@ def init_worker_process():
 
 
 @celery.task()
-def rate_editor(editor):
+def rate_editor(editor: dict):
     global editor_model
     # model.predict
     pass
 
 
 @celery.task()
-def train_editor(editor):
+def train_editor(editor: dict):
     global editor_model
     # model.fit
     pass

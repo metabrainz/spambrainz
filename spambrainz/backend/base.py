@@ -1,6 +1,6 @@
 class Backend:
-    def rate_editor(self, editor_id):
+    def rate_editor(self, editor_id: int):
         pass
 
-    def train_editor(self, editor_id, is_spammer):
+    def train_editor(self, editor_id: int, is_spammer: bool):
         pass

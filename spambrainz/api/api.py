@@ -1,9 +1,10 @@
 from flask import Blueprint
 from flask_restful import Api
 from .editor import RateEditor, TrainEditor
+from ..backend.base import Backend
 
 
-def create_api_bp(backend, token):
+def create_api_bp(backend: Backend, token: str) -> Blueprint:
     api_bp = Blueprint("api", __name__)
     api = Api(api_bp)
 

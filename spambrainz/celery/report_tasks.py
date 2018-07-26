@@ -19,6 +19,6 @@ def init_worker_process():
 
 
 @celery.task()
-def write_report(score, editor_id):
+def write_report(score: float, editor_id: int):
     # Spamninja integration goes here
     pass

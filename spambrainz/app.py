@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_debugtoolbar import DebugToolbarExtension
+from typing import Dict
 from .web.models import db
 from .web.views import index
 from .api.api import create_api_bp
